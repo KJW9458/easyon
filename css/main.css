@@ -56,25 +56,25 @@ textarea {
 }
 
 button {
-    cursor: pointer
+    cursor: pointer;
 }
 
 input,
 button {
     border-radius: 0;
     background: #fff;
-    border: 1px solid #aaa
+    border: 1px solid #aaa;
 }
 
-input:focus {
+/* input:focus {
     border-color: 
-}
+} */
 
-textarea:focus {
+/* textarea:focus {
     border-color: 
-}
+} */
 
-video{}
+/* video{} */
 
 footer {
 margin-top: 160px;}

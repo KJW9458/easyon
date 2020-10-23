@@ -23,8 +23,9 @@ $text=$_REQUEST['query'];
   $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 //  echo "status_code:".$status_code."";
   curl_close ($ch);
+  $arr = array($response);
   if($status_code == 200) {
-    echo $response;
+    echo $arr;
   } else {
     echo "Error 내용:".$response;
   }
