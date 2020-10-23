@@ -545,8 +545,8 @@
         var val = $('#nsearch').val();
 
         $.ajax({
-            url: "./search.php?query=" + val,
-            type: "GET",
+            url: "./search.php",
+            type: "POST",
             dataType: "html",
             data: {
                 query: val
