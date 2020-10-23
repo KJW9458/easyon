@@ -547,7 +547,7 @@
         $.ajax({
             url: "./search.php?query=" + val,
             type: "GET",
-            dataType: "json",
+            dataType: "html",
             data: {
                 query: val
             },
@@ -555,7 +555,7 @@
             success: function(data) {
                 console.log(JSON.parse(data));
                 var n = JSON.parse(data);
-                //console.log(n.items[0].title);
+                console.log(n.items[0].title);
                 var end = n.display;
                 var content = "";
                 $('#naver').html('');
