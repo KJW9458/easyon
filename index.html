@@ -360,7 +360,7 @@
             if (isConnected) {
                 cnt--;
                 isConnected = false;
-                document.querySelector('#enterBtn').innerHTML = "시작";
+                document.querySelector('#enterBtn').innerHTML = "시작하기";
                 Object.keys(remonRoom).forEach(function(id) {
                     if (id !== remon.getChannelId()) {
                         let video = document.getElementById(id.replace(":", "-"));
@@ -375,7 +375,7 @@
             } else {
                 isConnected = true;
                 cnt++;
-                document.querySelector('#enterBtn').innerHTML = "종료";
+                document.querySelector('#enterBtn').innerHTML = "종료하기";
                 remon = new Remon({
                     config,
                     listener
