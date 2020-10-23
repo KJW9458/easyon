@@ -553,8 +553,8 @@
             },
             cache: false,
             success: function(data) {
-                console.log(data);
-                var n = data;
+                console.log(JSON.parse(data));
+                var n = JSON.parse(data);
                 console.log(n.items[0].title);
                 var end = n.display;
                 var content = "";
