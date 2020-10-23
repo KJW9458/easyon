@@ -1,0 +1,69 @@
+.messages {
+        flex-grow: 1;
+        padding: 20px 30px;
+        overflow: auto;
+      }
+      .message {
+        display: flex;
+        flex-direction: column;
+      }
+      .message--mine {
+        align-items: flex-end;
+      }
+      .message--theirs {
+        align-items: flex-start;
+      }
+      .message__name {
+        padding: 10px 0;
+      }
+      .message__bubble {
+        padding: 20px;
+        border-radius: 3px;
+      }
+      .message--theirs .message__bubble {
+        background: #6363bf;
+        color: white;
+      }
+      .message--mine .message__bubble {
+        background: rgba(156, 172, 172, 0.2);
+      }
+      .footer {
+        border-top: 1px solid rgba(156, 172, 172, 0.2);
+        display: table;
+        flex-shrink: 0;
+/*        position: absolute;*/
+        bottom: 0px;
+          
+          margin-bottom: 10px;
+
+      }
+      .footer input{width: 70% !important;margin-top: 10px;}
+      input {
+        border: none;
+        flex-grow: 1;
+        padding: 5px 15px;
+        font-size: 16px;
+        background: #fff;
+        display: table-cell
+      }
+      button {
+          margin: 1%;
+        border: none;
+        background: transparent;
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+          display: table-cell;
+          background: rgba(0,0,0,0.085);
+          background: #aaa;
+          border-radius: 5px;
+          color: #333;
+      }
+#startCall{
+    width: 100%; background: #fff; border-radius: 5px; padding: 10px;box-shadow: 1px 1px 5px rgba(0,0,0,0.085)
+}
+#stopCall{
+    width: 100%; background: #fff; border-radius: 5px; padding: 10px;box-shadow: 1px 1px 5px rgba(0,0,0,0.085)
+}
+
+    </style>
