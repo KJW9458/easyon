@@ -13,13 +13,13 @@ let remoteConnection;
 let sendChannel;
 let receiveChannel;
 let fileReader;
-// const bitrateDiv = document.querySelector('div#bitrate');
+const bitrateDiv = document.querySelector('div#bitrate');
 const fileInput = document.querySelector('input#fileInput');
 const abortButton = document.querySelector('button#abortButton');
-// const downloadAnchor = document.querySelector('a#download');
+const downloadAnchor = document.querySelector('a#download');
 const sendProgress = document.querySelector('progress#sendProgress');
 const receiveProgress = document.querySelector('progress#receiveProgress');
-// const statusMessage = document.querySelector('span#status');
+const statusMessage = document.querySelector('span#status');
 const sendFileButton = document.querySelector('button#sendFile');
 
 let receiveBuffer = [];
@@ -92,11 +92,11 @@ function sendData() {
   console.log(`File is ${[file.name, file.size, file.type, file.lastModified].join(' ')}`);
 
   // Handle 0 size files.
-//   statusMessage.textContent = '';
-//   downloadAnchor.textContent = '';
+  statusMessage.textContent = '';
+  downloadAnchor.textContent = '';
   if (file.size === 0) {
     bitrateDiv.innerHTML = '';
-    // statusMessage.textContent = 'File is empty, please select a non-empty file';
+    statusMessage.textContent = 'File is empty, please select a non-empty file';
     closeDataChannels();
     return;
   }
@@ -172,12 +172,12 @@ function receiveChannelCallback(event) {
 
   receivedSize = 0;
   bitrateMax = 0;
-//   downloadAnchor.textContent = '';
-//   downloadAnchor.removeAttribute('download');
-//   if (downloadAnchor.href) {
-//     URL.revokeObjectURL(downloadAnchor.href);
-//     downloadAnchor.removeAttribute('href');
-//   }
+  downloadAnchor.textContent = '';
+  downloadAnchor.removeAttribute('download');
+  if (downloadAnchor.href) {
+    URL.revokeObjectURL(downloadAnchor.href);
+    downloadAnchor.removeAttribute('href');
+  }
 }
 
 function onReceiveMessageCallback(event) {
@@ -194,15 +194,16 @@ function onReceiveMessageCallback(event) {
     const received = new Blob(receiveBuffer);
     receiveBuffer = [];
 
-    // downloadAnchor.href = URL.createObjectURL(received);
-    // downloadAnchor.download = file.name;
-    // downloadAnchor.textContent =
-    //   `Click to download '${file.name}' (${file.size} bytes)`;
-    // downloadAnchor.style.display = 'block';
+    downloadAnchor.href = URL.createObjectURL(received);
+    downloadAnchor.download = file.name;
+    downloadAnchor.textContent =
+      `Click to download '${file.name}' (${file.size} bytes)`;
+    downloadAnchor.style.display = 'block';
 
     const bitrate = Math.round(receivedSize * 8 /
       ((new Date()).getTime() - timestampStart));
-    // bitrateDiv.innerHTML = `<strong>Average Bitrate:</strong> ${bitrate} kbits/sec (max: ${bitrateMax} kbits/sec)`;
+    bitrateDiv.innerHTML =
+      `<strong>Average Bitrate:</strong> ${bitrate} kbits/sec (max: ${bitrateMax} kbits/sec)`;
 
     if (statsInterval) {
       clearInterval(statsInterval);
