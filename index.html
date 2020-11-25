@@ -525,22 +525,22 @@
         var formData = new FormData();
         formData.append('file', $('#fileInput')[0].files[0]);
 
-        $.ajax({
-            url: 'upload.php',
-            dataType: 'text',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: formData,
-            type: 'POST',
-            success: function(response) {
-                console.log(response);
-                $('#read').load('readdir.php');
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
+        // $.ajax({
+        //     url: 'upload.php',
+        //     dataType: 'text',
+        //     cache: false,
+        //     contentType: false,
+        //     processData: false,
+        //     data: formData,
+        //     type: 'POST',
+        //     success: function(response) {
+        //         console.log(response);
+        //         $('#read').load('readdir.php');
+        //     },
+        //     error: function(error) {
+        //         console.log(error);
+        //     }
+        // });
     }
 
 </script>
