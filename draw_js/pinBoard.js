@@ -50,7 +50,7 @@ var pinBoard = (function($) {
 
 		canvasTemplate : function() {
 			// return '<canvas width="'+($('#section01').width()-40)+'" height="'+($('#section01').height()-120)+'"></canvas>';
-			return '<canvas id="canvas" width="1200" height="1200"></canvas>';
+			return '<canvas id="canvas" width="1200" height="1200"><img src=""></canvas>';
 		},
 
 		//Create Pinboard Canvas
