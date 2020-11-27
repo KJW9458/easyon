@@ -125,7 +125,7 @@
   border: 1px solid #f2efdf;
   cursor: crosshair;
 }
-.pinBoard canvas img{
+.pinBoard img{
   width: 100%;
   object-position:center;
   object-fit:contain;
