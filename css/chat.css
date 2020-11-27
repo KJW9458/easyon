@@ -17,7 +17,7 @@
         padding: 10px 0;
       }
       .message__bubble {
-        padding: 15px 5px;
+        padding: 10px 5px;
         border-radius: 3px;
       }
       .message--theirs .message__bubble {
