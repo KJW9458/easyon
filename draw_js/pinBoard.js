@@ -250,7 +250,7 @@ var pinBoard = (function($) {
     			image.src = _file.target.result;
                     console.log(image);
     			image.onload = function() {
-     			   context.drawImage(image, 0, 0);
+     			   context.drawImage(image, 0, 0, 1200, 1200);
    			   };
 			}
 		}
