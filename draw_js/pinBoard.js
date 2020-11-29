@@ -230,8 +230,8 @@ var pinBoard = (function($) {
 		},
 		//Clear Canvas and array
 		trashcan : function() {
-			context.clearRect ( 0 , 0 , ($('#section01').width()-40) , ($('#section01').height()-120));
-			// context.clearRect ( 0 , 0 , 960 , 960);
+			// context.clearRect ( 0 , 0 , ($('#section01').width()-40) , ($('#section01').height()-120));
+			context.clearRect ( 0 , 0 , 960 , 960);
 			pinPos = [];
 			pencilPos = [];
 		},
