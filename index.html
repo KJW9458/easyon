@@ -373,6 +373,7 @@
             <p>사용자3</p>
         </div>
         */
+        // 영상 시작 또는 종료 하기 
         async function start(r) {
             // alert(r);
             if (isConnected) {
@@ -475,30 +476,7 @@
     <script src="js/ga.js"></script>
 
 </body>
-<script>
-    var time = 1200;
-    var min = "";
-    var sec = "";
 
-    ////    var x = setInterval(function() {
-    ////        min = parseInt(time/60);
-    ////        if((time%60)<10){
-    ////            sec = "0"+time%60;
-    ////        } else {
-    ////            sec = time%60;
-    ////        }
-    ////        
-    //
-    //        document.getElementById('time').innerHTML = min + " : " + sec;
-    //        time--;
-    //
-    //        if(time<0){
-    //            clearInterval(x);
-    //            document.getElementById('time').innerHTML = "00:00";
-    //        }
-    //    }, 1000);
-
-</script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="css/chat.css">
 <script type="text/javascript" src="js/script.js"></script>
@@ -526,6 +504,7 @@
 
 </script>
 <script>
+    // 파일첨부시 ajax 반응 - 지금은 주석처리
     function change(obj) {
         var str = obj.value;
         var num = str.length;
@@ -559,6 +538,7 @@
 
 </script>
 <script>
+    // 네이버 검색 ajax
     function naver_btn() {
         var val = $('#nsearch').val();
 
@@ -608,6 +588,7 @@
 
 </script>
 <script>
+//  오디오 음량 설정(이게 맞는지 모르겠습니다)
     var audioContext = new AudioContext();
     var gainNode = audioContext.createGain();
     navigator.mediaDevices.getUserMedia({
