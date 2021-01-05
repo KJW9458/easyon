@@ -1,10 +1,10 @@
     // 네이버 검색 ajax
     function naver_btn() {
         var val = $('#nsearch').val();
-
+        console.log(val);
         $.ajax({
-            url: "./search.php",
-            type: "POST",
+            url: "../search.php",
+            type: "GET",
             dataType: "json",
             data: {
                 query: val,
