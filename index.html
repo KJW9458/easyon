@@ -1,0 +1,564 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8“>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>이지온</title>
+    <meta name="description" content="홈페이지 소개">
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="img/opengraph-img.jpg" />
+    <meta property="og:title" content="홈페이지 이름" />
+    <meta property="og:description" content="홈페이지 소개" />
+    <meta property="og:url" content="홈페이지 URL 입력" />
+    <meta name="robots" content="index,follow" />
+    <!-- Mobile Stuff -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Chrome on Android -->
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="홈페이지 이름">
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700&display=swap&subset=korean" rel="stylesheet">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="rgba(0,0,0,0)">
+    <meta name="naver-site-verification" content="01f26d1bf9dfb238fe359fb66ee4c816281dd2fe" />
+    <link rel="canonical" href="홈페이지 URL 입력">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- 그림판 CSS -->
+    <link rel="stylesheet" href="stylesheets/pinBoard.css">
+
+</head>
+<style>
+    .col-lg-5 {
+        max-width: 100%
+    }
+
+    .card-body{
+        padding: 0px 0px 0px 15px;
+    }
+
+</style>
+
+<body>
+    <header>
+    </header>
+    <main>
+        <section id="section02">
+            <div class="tab-wrap">
+                <div class="sound">
+                    <div class="sound-btn"></div>
+                    <input type="range" name="sound" class="volume" min="1" max="100" step="1" value="1" onchange="vChange('sound', this.value)">
+                </div>
+                <div class="mic">
+                    <div class="mic-btn"></div>
+                    <input type="range" name="mic" class="volume" min="1" max="100" step="1" value="1" onchange="vChange('mic', this.value)">
+                </div>
+                <!-- 화상통화 연결 -->
+                <div class="col-lg-5" style="max-width:100%">
+                    <div class="mt-12 text-center">
+                        <span class="mr-2">
+                            <a id="enterBtn" href="#" class="btn btn-primary btn-user text-center" style="width: 100%;color: #fff;margin-top: 10px;background:#3ebaae; border: 1px solid #3ebaae">
+                                시작하기
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- 작은 화상통화 영역 -->
+            <div class="student-wrap">
+                <div class="box">
+                    <video id="localVideo" class="remote-video center w-300 h-300" muted autoplay playsinline></video>
+                </div>
+                <div class="box">
+                    <div class="card-body">
+                        <main class="text-center">
+                            <div class="row" style="width:370px;height: 215px;" id="otherVideos">
+                            </div>
+                        </main>
+                    </div>
+                    <!-- <video id="remoteVideo1" class="remote" muted autoplay playsinline></video> -->
+                </div>
+                <!-- <div class="box">
+                    <div class="row" style="width:250px;" id="otherVideos">
+                    </div>
+                    <video id="remoteVideo2" class="remote" muted autoplay playsinline></video>
+                </div> -->
+            </div>
+            <!-- 작은 화상통화 영역 끝 -->
+            <!-- 채팅창 영역 -->
+            <div class="chat-wrap">
+                <div class="title">채팅창</div>
+                <div class="chat" style="overflow-y:auto">
+                    <div class="member">
+                        <div class="profile-name">
+                            <!--                            <div class="profile"></div>-->
+                            <!--                            <div class="name">profile name</div>-->
+                        </div>
+                        <!--
+                        <div class="chatbox">Greg Abbott, the Republican governor of the
+                            country’s largest Republican-controlled
+                            state, is facing increasing pressure over his
+                            decision to open the economy.</div>
+-->
+                    </div>
+                    <!--
+                    <div class="me">
+                        <div class="chatbox">Greg Abbott, the Republican governor of the
+                            country’s largest Republican-controlled </div>
+                    </div>
+-->
+                    <div class="messages">
+
+                    </div>
+                    <form class="footer" onsubmit="return false;">
+                        <input type="text" placeholder="메세지를 입력하세요.">
+                        <button type="submit" style="color:#fff">전송</button>
+                    </form>
+                    <template data-template="message">
+                        <div class="message">
+                            <div class="message__name"></div>
+                            <div class="message__bubble"></div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <!-- 채팅창 영역 끝 -->
+            <!-- 파일공유 영역 -->
+            <div class="file-share">
+                <div class="title" id="file_title">파일공유리스트 (0)</div>
+                <!--               파일 수 만큼 숫자변경 -->
+
+                <div class="wrap" id="read">
+                    <!--
+                        <div class="file">
+                            <p>과제01.jpg</p>
+                            <p>보기</p>
+                            <p>다운받기</p>
+                        </div>
+-->
+                </div>
+
+            </div>
+            <!-- 파일공유 영역 끝 -->
+            <!-- 접속자리스트 영역 -->
+            <div class="accessor">
+                <div class="title" id="join_user">현재접속자리스트 (0/4)</div>
+                <!--            접속자 수 만큼 변경-->
+                <div class="wrap" id="join_list">
+
+                </div>
+            </div>
+            <!-- 접속자리스트 영역 끝 -->
+        </section>
+        <section id="section01">
+            <div class="tab-wrap">
+                <div class="tab on first_tab" onclick="openTab(event, 'tab1')">화상교육</div>
+                <div class="tab other_tab" onclick="openTab(event, 'tab2')">그림판</div>
+                <div class="tab other_tab" onclick="openTab(event, 'tab3')">오디오공유</div>
+                <div class="tab other_tab" onclick="openTab(event, 'tab4')">검색공유</div>
+                <div class="rec">
+                    <!-- <div class="rec-box on">녹화중</div> -->
+                    <div id="time" class="rec-time"></div>
+                    <div class="test"></div>
+                </div>
+            </div>
+            <!-- 큰 화상통화 탭 -->
+            <div class="c-box01 tabcontent" id="tab1">
+
+                <!-- <div class="row">
+                    <div id="controlLeft" class="col-6 col-sm-6 col-md-6">
+                        <button id="startCall">시작</button>
+                    </div>
+                    <div id="controlRight" class="col-6 col-sm-6 col-md-6">
+                        <button id="stopCall">종료</button>
+                    </div>
+                </div> -->
+                <video id="localVideo" class="remote-video center w-300 h-300" muted autoplay playsinline></video>
+
+            </div>
+            <!-- 그림판 탭 -->
+            <div class="c-box01 tabcontent canvas_tab" id="tab2" style="display:none">
+                <div class="pinBoard"></div> 
+
+                <script src="draw_js/jquery.min.js"></script>
+                <script src="draw_js/pinBoard.js"></script>
+
+                <script>
+                    // 그림판 js
+                    pinBoard();
+
+                </script>
+            </div>
+            <!-- 첨부파일 업로드 탭 -->
+            <div class="c-box01 tabcontent" id="tab3" style="display:none">
+                <div class="audio">
+                    <form id="fileInfo" method="post" enctype="multipart/form-data">
+                        <div class="filebox">
+                            <div class="btn" onclick="document.querySelector('#fileInput').click();">첨부파일</div>
+                            <div id="file_name">첨부파일이름</div>
+                            <input type="file" id="fileInput" name="files" style="display:none" onchange="change(this)">
+                            <button disabled id="sendFile">Send</button>
+                            <button disabled id="abortButton" style="display:none">Abort</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- 웹 이미지 검색 탭 / 네이버 검색 api -->
+            <div class="c-box01 tabcontent" id="tab4" style="display:none;overflow-y: scroll;">
+                <div>
+                    <input type="text" id="nsearch" name="nsearch" onkeydown="javascript:Enter_Check();">
+                    <button id="nbtn" onclick="naver_btn()">검색</button>
+                </div>
+                <div id="naver"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+
+    </footer>
+    <!--    <script src="video.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@remotemonster/sdk/remon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@remotemonster/sdk"></script>
+    <script src="chat_script.js"></script>
+    <script src="./js/canvas_recode.js"></script>
+    <script>
+        var cnt = 0;
+        const roomHash = location.hash.substring(1); // 방번호 가져오기
+
+        const enterBtn = document.querySelector("#enterBtn");
+        const otherVideos = document.getElementById('otherVideos');
+        let remonCall;
+        let isConnected = false;
+        let remon;
+        let remonRoom = [];
+        const key = "6e779e7ed3e3bf6301d6b49529863fa0ebea59b903f2972c5565ba12201edb34";
+        const serviceId = "ad1f48ee-4e50-4e45-9cb8-ce667a272173";
+
+        const config = {
+            credential: {
+                key: key,
+                serviceId: serviceId,
+                wsurl: "wss://signal.remotemonster.com/ws",
+                resturl: "https://signal.remotemonster.com/rest",
+            },
+            // video 위치
+            view: {
+                // remote1: '#remoteVideo1',
+                // remote2: '#remoteVideo2',
+                local: '#localVideo'
+            },
+            // video  설정
+            media: {
+                video: {
+                    width: {
+                        min: 250,
+                        max: 250
+                    },
+                    height: {
+                        min: 250,
+                        max: 250
+                    },
+                    frameRate: {
+                        min: 8,
+                        max: 30
+                    },
+                    maxBandwidth: 250,
+                    codec: 'H264'
+                },
+                audio: true
+            }
+        }
+        // video css, 기타 설정
+        const videoAttrs = {
+            id: "other",
+            class: "remote-video center w-320 h-240",
+            autoplay: true,
+            muted: true,
+            playsinline: true,
+            style: "z-index:1;background: rgba(0, 0, 0, 0.5); width: 250px;height: 250px; object-fit: cover; margin: 10px"
+        }
+        // 이벤트 리스너
+        const listener = {
+            onConnect(chid) {
+                console.log(`remon.listener.onConnect ${chid} at listener`);
+            },
+            onComplete() {
+                console.log(`remon.listener.onComplete: ${remon.getChannelId()} `);
+                remonRoom[remon.getChannelId()] = true;
+            },
+            onDisconnectChannel() {
+                // is called when other peer hang up.
+                remon.close();
+                isConnected = false;
+            },
+            onClose() {
+                // is called when remon.close() method is called.
+                console.log(`remon.listener.onClose: ${remon.getChannelId()}`);
+            },
+            onError(error) {
+                console.log(`remon.listener.onError: ${remon.getChannelId()} ${error}`);
+            },
+            onStat(result) {
+                // console.log(`EVENT FIRED: onStat:  ${JSON.stringify(result)}`);
+            },
+            onRoomEvent(result) {
+                //join 방 입장, 나가기 시 반응
+                switch (result.event) {
+                    case 'join':
+                        if (!remonRoom[result.channel.id]) {
+                            remonRoom[result.channel.id] = true;
+                            let newVideo = document.createElement('video')
+                            videoAttrs.id = result.channel.id.replace(":", "-");
+                            Object.keys(videoAttrs).forEach(key => newVideo.setAttribute(key, videoAttrs[key]))
+                            config.view.remote = `#${newVideo.id}`
+                            newVideo.remon = new Remon({
+                                config
+                            })
+                            otherVideos.append(newVideo)
+                            newVideo.remon.joinCast(newVideo.id.replace("-", ":"))
+                        }
+                        break;
+                    case 'leave':
+                        if (remonRoom[result.channel.id] && result.channel.id !== remon.getChannelId()) {
+                            let video = document.getElementById(result.channel.id.replace(":", "-"));
+                            otherVideos.removeChild(video);
+                            delete remonRoom[result.channel.id]
+                        }
+                        break;
+                }
+                console.log(`EVENT FIRED: onRoomEvent channel Id : ${remon.getChannelId()}`)
+                console.log(`EVENT FIRED: onRoomEvent: ${JSON.stringify(result)}`)
+            }
+        };
+        /*
+        <div class="user">
+            <p>사용자1</p>
+        </div>
+        <div class="user">
+            <p>사용자2</p>
+        </div>
+        <div class="user">
+            <p>사용자3</p>
+        </div>
+        */
+        // 영상 시작 또는 종료 하기 
+        async function start(r) {
+            // alert(r);
+            if (isConnected) {
+                cnt--;
+                isConnected = false;
+                document.querySelector('#enterBtn').innerHTML = "시작하기";
+                Object.keys(remonRoom).forEach(function(id) {
+                    if (id !== remon.getChannelId()) {
+                        let video = document.getElementById(id.replace(":", "-"));
+                        if (video && video.remon) {
+                            otherVideos.removeChild(video);
+                        }
+                    }
+                    delete remonRoom[id];
+                })
+                document.getElementById('join_user').innerHTML = "현재접속자리스트 (" + cnt + "/4)";
+                remon.close()
+            } else {
+                isConnected = true;
+                cnt++;
+                document.querySelector('#enterBtn').innerHTML = "종료";
+                remon = new Remon({
+                    config,
+                    listener
+                });
+                await remon.createRoom(r);
+                let participants = await remon.fetchRooms(r);
+                participants.forEach(async function(participant) {
+                    if (!remonRoom[participant.id]) {
+                        remonRoom[participant.id] = true;
+                        let newVideo = document.createElement('video');
+                        videoAttrs.id = participant.id.replace(":", "-");
+                        Object.keys(videoAttrs).forEach(key => newVideo.setAttribute(key, videoAttrs[key]))
+                        config.view.remote = `#${newVideo.id}`
+                        newVideo.remon = new Remon({
+                            config
+                        })
+                        otherVideos.append(newVideo)
+                        await newVideo.remon.joinCast(newVideo.id.replace("-", ":"));
+                    }
+                })
+                document.getElementById('join_user').innerHTML = "현재접속자리스트 (" + cnt + "/4)";
+                document.getElementById('join_list').append('<div class="user"><p>' + newVideo.id + '</p></div>');
+            }
+        }
+
+
+        enterBtn.addEventListener("click",
+            evt => {
+                start(roomHash);
+                evt.preventDefault();
+            },
+            false
+        );
+
+        // const listener = {
+        //     onConnect(chid) {
+        //         $('#channelId').text(chid);
+        //         $('#channelState').text("대기 중");
+        //         console.log(`onConnect: ${chid}`);
+        //     },
+        //     onComplete() {
+        //         $('#channelState').text("통화 중");
+        //         console.log(`onComplete`);
+        //     },
+        //     onClose() {
+        //         $('#channelState').text("통화 종료");
+        //         console.log(`onClose`);
+        //         remonCall.close();
+        //         if ($('#localVideo')[0].srcObject) {
+        //             $('#localVideo')[0].srcObject = undefined;
+        //         }
+        //         remonCall = new Remon({
+        //             config: config,
+        //             listener: listener
+        //         });
+        //     }
+        // }
+
+        // remonCall = new Remon({
+        //     config: config,
+        //     listener: listener
+        // });
+
+        // $('#startCall').click(function() {
+        //     // connectCall의 인자는 통화채널의 ID입니다. 실제 서비스에서는 동일한 통화채널의 ID가 아닌, 고유하고 예측이 어려운 ID를 사용해야합니다.
+        //     remonCall.connectCall('my-first-channel');
+        // });
+
+        // // "종료" 버튼을 클릭하면 통화채널에서 나갑니다.
+        // $('#stopCall').click(function() {
+        //     remonCall.close();
+        // });
+
+    </script>
+
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="js/main.js" async></script>
+    <script src="js/file_main.js"></script>
+    <script src="js/ga.js"></script>
+
+</body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="css/chat.css">
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+
+<script>
+    $('input[type=range]').on('input', function() {
+        var val = $(this).val();
+        $(this).css('background', 'linear-gradient(to right, #3ebaae 0%, #3ebaae ' + val + '%, #d5d4d3 ' + val + '%, #d5d4d3 100%)');
+    });
+
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" on", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " on";
+    }
+
+</script>
+<script>
+    // 파일첨부시 ajax 반응 - 지금은 주석처리
+    function change(obj) {
+        var str = obj.value;
+        var num = str.length;
+        var i = str.lastIndexOf("\\");
+        var index = str.substr(i + 1, num);
+        document.getElementById('file_name').innerHTML = index;
+        // document.querySelector('#sendFile').click();
+
+        var form = $('#fileInput')[0];
+
+        var formData = new FormData();
+        formData.append('file', $('#fileInput')[0].files[0]);
+
+        // $.ajax({
+        //     url: 'upload.php',
+        //     dataType: 'text',
+        //     cache: false,
+        //     contentType: false,
+        //     processData: false,
+        //     data: formData,
+        //     type: 'POST',
+        //     success: function(response) {
+        //         console.log(response);
+        //         $('#read').load('readdir.php');
+        //     },
+        //     error: function(error) {
+        //         console.log(error);
+        //     }
+        // });
+    }
+
+</script>
+<script type="text/javascript" src="js/audio.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
+<script type="text/javascript">
+    function Enter_Check() {
+        // 엔터키의 코드는 13입니다.
+        if (event.keyCode == 13) {
+            document.querySelector('#nbtn').click();
+            return;
+        }
+    }
+
+    $('.messages').scrollTop($('.messages').prop('scrollHeight'));
+
+</script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+</html>
