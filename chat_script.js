@@ -175,7 +175,7 @@ form.addEventListener('submit', () => {
   input.value = '';
 
   const data = {
-    name,
+    //name,
     content: value,
     emoji,
   };
