@@ -167,10 +167,10 @@ function insertMessageToDOM(options, isFromMe) {
   // Scroll to bottom
   messagesEl.scrollTop = messagesEl.scrollHeight - messagesEl.clientHeight;
 }
-
-const form = document.querySelector('form');
+//querySelector('form');
+const form = document.chat_form;
 form.addEventListener('submit', () => {
-  const input = document.querySelector('input[type="text"]');
+  const input = document.querySelector('input[id="chat_text"]');
   const value = input.value;
   input.value = '';
 
