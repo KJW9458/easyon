@@ -1,5 +1,5 @@
-//  오디오 음량 설정(이게 맞는지 모르겠습니다)
-var audioContext = new AudioContext();
+//  오디오 음량 설정
+var audioContext = new (window.AudioContext || window.webkitAudioContext)();
 var gainNode = audioContext.createGain();
 navigator.mediaDevices.getUserMedia({
         audio: true

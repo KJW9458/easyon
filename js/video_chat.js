@@ -21,7 +21,8 @@ var cnt = 0;
             view: {
                 // remote1: '#remoteVideo1',
                 // remote2: '#remoteVideo2',
-                local: '#localVideo'
+                local: '#localVideo',
+                blocal: '#blocalVideo',
             },
             // video  설정
             media: {
