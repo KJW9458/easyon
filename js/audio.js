@@ -29,9 +29,10 @@ function changeMicrophoneLevel(value) {
 
 function vChange(t, v) {
     if (t == "sound") {
-        document.querySelector("video").volume = v;
+        document.getElementsByTagName("video").volume = v;
     } else if (t == "mic") {
-        changeMicrophoneLevel(v);
+        // changeMicrophoneLevel(v);
+        
     }
 
     // $('.test').text(t+" "+v);

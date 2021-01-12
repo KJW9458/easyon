@@ -28,12 +28,12 @@ var cnt = 0;
             media: {
                 video: {
                     width: {
-                        min: 250,
-                        max: 250
+                        min: 370, //250
+                        max: 370
                     },
                     height: {
-                        min: 250,
-                        max: 250
+                        min: 215, //250
+                        max: 215
                     },
                     frameRate: {
                         min: 8,
@@ -52,7 +52,7 @@ var cnt = 0;
             autoplay: true,
             muted: true,
             playsinline: true,
-            style: "z-index:1;background: rgba(0, 0, 0, 0.5); width: 250px;height: 250px; object-fit: cover; margin: 10px"
+            style: "z-index:1;background: rgba(0, 0, 0, 0.5); width: 370px;height: 215px; object-fit: cover; margin: 10px"
         }
         // 이벤트 리스너
         const listener = {
