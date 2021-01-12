@@ -25,12 +25,12 @@ const config = {
     media: {
         video: {
             width: {
-                min: 250,
-                max: 250
+                min: 370, //250
+                max: 370 //250
             },
             height: {
-                min: 250,
-                max: 250
+                min: 215,
+                max: 215
             },
             frameRate: {
                 min: 8,
@@ -49,7 +49,7 @@ const videoAttrs = {
     autoplay: true,
     muted: true,
     playsinline: true,
-    style: "z-index:1;background: rgba(0, 0, 0, 0.5); width: 250px;height: 250px; object-fit: cover; margin: 10px"
+    style: "z-index:1;background: rgba(0, 0, 0, 0.5); width: 370px;height: 215px; object-fit: cover; margin: 10px"
 }
 
 const listener = {
