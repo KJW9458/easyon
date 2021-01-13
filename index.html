@@ -259,60 +259,6 @@
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/owl.carousel.min.js"></script>
 
-<script>
-    var audioContext = new AudioContext();
-    var gainNode = audioContext.createGain();
-    navigator.mediaDevices.getUserMedia({
-            audio: true
-        })
-        .then((stream) => {
-            console.log('got stream', stream);
-            window.orginalStream = stream;
-            return stream;
-        })
-        .then((stream) => {
-            audioSource = audioContext.createMediaStreamSource(stream),
-                audioDestination = audioContext.createMediaStreamDestination();
-            audioSource.connect(gainNode);
-            gainNode.connect(audioDestination);
-            gainNode.gain.value = 1;
-            window.localStream = audioDestination.stream;
-        })
-        .catch((err) => {
-            console.error('Something wrong in capture stream', err);
-        })
-
-    function changeMicrophoneLevel(value) {
-        if (value && value >= 0 && value <= 2) {
-            gainNode.gain.value = value;
-        }
-    }
-
-    function vChange(t, v) {
-        if (t == "sound") {
-            document.querySelector("video").volume = v;
-        } else if (t == "mic") {
-            changeMicrophoneLevel(v);
-        }
-
-        // $('.test').text(t+" "+v);
-    }
-
-</script>
-<script>
-    var context = new webkitAudioContext(),
-    sineWave = context.createOscillator(),
-    gainNode = context.createGainNode();
-
-    sineWave.frequency.value = 900;
-    sineWave.connect(gainNode);
-    gainNode.connect(context.destination);
-    sineWave.noteOn(0);
-
-    document.getElementById('volume').addEventListener('change', function() {
-        gainNode.gain.value = this.value;
-    });
-</script>
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
