@@ -104,17 +104,7 @@ const listener = {
         console.log(`EVENT FIRED: onRoomEvent: ${JSON.stringify(result)}`)
     }
 };
-/*
-<div class="user">
-    <p>사용자1</p>
-</div>
-<div class="user">
-    <p>사용자2</p>
-</div>
-<div class="user">
-    <p>사용자3</p>
-</div>
-*/
+
 async function start(r) {
     // alert(r);
     if (isConnected) {
