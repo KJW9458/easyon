@@ -68,6 +68,10 @@ const listener = {
     onClose() {
         // is called when remon.close() method is called.
         console.log(`remon.listener.onClose: ${remon.getChannelId()}`);
+        console.log(`onClose`);
+        remonCall.close();
+        if($('#localVideo')[0].srcObject){ $('#localVideo')[0].srcObject=undefined; }
+        remonCall = new Remon({config: config, listener: listener});
     },
     onError(error) {
         console.log(`remon.listener.onError: ${remon.getChannelId()} ${error}`);
