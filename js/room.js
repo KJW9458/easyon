@@ -44,7 +44,7 @@ const config = {
 }
 
 const videoAttrs = {
-    id: "other",
+    // id: "other",
     class: "remote-video center w-320 h-240",
     autoplay: true,
     muted: true,
