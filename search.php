@@ -17,7 +17,7 @@ $text=$_REQUEST['query'];
   $headers[] = "X-Naver-Client-Id: ".$client_id;
   $headers[] = "X-Naver-Client-Secret: ".$client_secret;
   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
   $response = curl_exec ($ch);
   $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
   echo "status_code:".$status_code."";
