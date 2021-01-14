@@ -18,7 +18,7 @@ const config = {
         resturl: "https://signal.remotemonster.com/rest",
     },
     view: {
-        remote1: '#remoteVideo1',
+        // remote1: '#remoteVideo1',
         // remote2: '#remoteVideo2',
         local: '#localVideo'
     },
@@ -92,14 +92,14 @@ const listener = {
                     newVideo.remon = new Remon({
                         config
                     })
-                    // otherVideos.append(newVideo)
+                    otherVideos.append(newVideo)
                     newVideo.remon.joinCast(newVideo.id.replace("-", ":"))
                 }
                 break;
             case 'leave':
                 if (remonRoom[result.channel.id] && result.channel.id !== remon.getChannelId()) {
                     let video = document.getElementById(result.channel.id.replace(":", "-"));
-                    // otherVideos.removeChild(video);
+                    otherVideos.removeChild(video);
                     delete remonRoom[result.channel.id]
                 }
                 break;
@@ -119,7 +119,7 @@ async function start(r) {
             if (id !== remon.getChannelId()) {
                 let video = document.getElementById(id.replace(":", "-"));
                 if (video && video.remon) {
-                    // otherVideos.removeChild(video);
+                    otherVideos.removeChild(video);
                 }
             }
             delete remonRoom[id];
@@ -146,7 +146,7 @@ async function start(r) {
                 newVideo.remon = new Remon({
                     config
                 })
-                // otherVideos.append(newVideo)
+                otherVideos.append(newVideo)
                 await newVideo.remon.joinCast(newVideo.id.replace("-", ":"));
             }
         })
