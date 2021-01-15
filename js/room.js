@@ -110,7 +110,6 @@ const listener = {
 };
 
 async function start(r) {
-    // alert(r);
     if (isConnected) {
         cnt--;
         isConnected = false;
