@@ -12,12 +12,12 @@ if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self
         storage = chrome.storage.local;
         storage.get('mastervolume',function(result){
           if (result && result.mastervolume){
-            // console.log('old value found', result);
+            console.log('old value found', result);
             inputslider.value = result.mastervolume;
             // sliderlabel.innerHTML = result.mastervolume;
             updateVolume(result.mastervolume/100.0);
           }else{
-            // console.log('creating new storage', parseFloat(inputslider.value));
+            console.log('creating new storage', parseFloat(inputslider.value));
             storage.set({'mastervolume':parseFloat(inputslider.value)});
           }
         });
