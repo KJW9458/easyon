@@ -1,3 +1,4 @@
+// CHROME 만 ?
 if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self.port === 'undefined')){
     // console.log('neither in chrome nor FF');
   }else{
