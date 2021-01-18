@@ -8,6 +8,7 @@ if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self
       var inputslider = document.getElementById('inputSlider');
     //   var sliderlabel = document.getElementById('sliderLabel');
     storage = chrome.storage.local;
+    console.log(storage);
       if (typeof chrome !== 'undefined' && chrome.storage){
         storage = chrome.storage.local;
         storage.get('mastervolume',function(result){
@@ -31,7 +32,7 @@ if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self
         if(typeof chrome !== 'undefined'){
           storage.set({'mastervolume':parseFloat(inputslider.value)});
         }
-  
+        console.log(volume);
         updateVolume(volume);
       })
     }
