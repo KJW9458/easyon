@@ -7,18 +7,17 @@ if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self
       var storage;
       var inputslider = document.getElementById('inputSlider');
     //   var sliderlabel = document.getElementById('sliderLabel');
-    storage = chrome.storage.local;
-    console.log(storage);
+  
       if (typeof chrome !== 'undefined' && chrome.storage){
         storage = chrome.storage.local;
         storage.get('mastervolume',function(result){
           if (result && result.mastervolume){
-            console.log('old value found', result);
+            // console.log('old value found', result);
             inputslider.value = result.mastervolume;
             // sliderlabel.innerHTML = result.mastervolume;
             updateVolume(result.mastervolume/100.0);
           }else{
-            console.log('creating new storage', parseFloat(inputslider.value));
+            // console.log('creating new storage', parseFloat(inputslider.value));
             storage.set({'mastervolume':parseFloat(inputslider.value)});
           }
         });
@@ -28,11 +27,10 @@ if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self
         // sliderlabel.innerHTML = parseInt(inputslider.value);
         var volume = parseFloat(inputslider.value)/100.0;
         console.log(storage);
-
         if(typeof chrome !== 'undefined'){
           storage.set({'mastervolume':parseFloat(inputslider.value)});
         }
-        console.log(volume);
+  
         updateVolume(volume);
       })
     }
