@@ -1,9 +1,9 @@
 // CHROME 만 ?
 if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self.port === 'undefined')){
-    // console.log('neither in chrome nor FF');
+    console.log('neither in chrome nor FF');
   }else{
     window.onload = function (){
-      // console.log('controlling volume');
+      console.log('controlling volume');
       var storage;
       var inputslider = document.getElementById('inputSlider');
     //   var sliderlabel = document.getElementById('sliderLabel');
@@ -42,7 +42,7 @@ if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self
         chrome.tabs.sendMessage(tabs[0].id, {mastervolume: volume});
       });
     }else if (typeof self !== 'undefined' && self.port){
-      // console.log('emiting..', volume);
+      console.log('emiting..', volume);
       self.port.emit('mastervolume',volume);
     }
   }
