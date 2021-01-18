@@ -26,7 +26,7 @@ if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self
       inputslider.addEventListener('input', function(){
         // sliderlabel.innerHTML = parseInt(inputslider.value);
         var volume = parseFloat(inputslider.value)/100.0;
-  
+        console.log(storage);
         if(typeof chrome !== 'undefined'){
           storage.set({'mastervolume':parseFloat(inputslider.value)});
         }
