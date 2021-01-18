@@ -1,4 +1,5 @@
 // CHROME 만 ?
+var chrome.storage.sync.get;
 if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self.port === 'undefined')){
     console.log('neither in chrome nor FF');
   }else{
@@ -27,6 +28,7 @@ if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self
         // sliderlabel.innerHTML = parseInt(inputslider.value);
         var volume = parseFloat(inputslider.value)/100.0;
         console.log(storage);
+
         if(typeof chrome !== 'undefined'){
           storage.set({'mastervolume':parseFloat(inputslider.value)});
         }
