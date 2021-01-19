@@ -10,7 +10,7 @@ if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self
     var storage;
     var inputslider = document.getElementById('inputSlider');
   //   var sliderlabel = document.getElementById('sliderLabel');
-
+  storage = chrome.storage.local;
     if (typeof chrome !== 'undefined' && chrome.storage){
       storage = chrome.storage.local;
       storage.get('mastervolume',function(result){
