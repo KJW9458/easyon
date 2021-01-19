@@ -6,7 +6,6 @@ if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self
 } else {
   window.onload = function (){
     console.log('controlling volume');
-    console.log(chrome);
     var storage;
     var inputslider = document.getElementById('inputSlider');
   //   var sliderlabel = document.getElementById('sliderLabel');
