@@ -192,13 +192,13 @@ enterBtn.addEventListener("click",
 //     listener: listener
 // });
 
-// $('#startCall').click(function() {
+// $('#enterBtn').click(function() {
 //     // connectCall의 인자는 통화채널의 ID입니다. 실제 서비스에서는 동일한 통화채널의 ID가 아닌, 고유하고 예측이 어려운 ID를 사용해야합니다.
-//     remonCall.connectCall('my-first-channel');
+//     remonCall.connectCall(roomHash);
 // });
 
 // // "종료" 버튼을 클릭하면 통화채널에서 나갑니다.
-// $('#stopCall').click(function() {
+// $('#enterBtn').click(function() {
 //     remonCall.close();
 // });
 
@@ -214,7 +214,9 @@ enterBtn.addEventListener("click",
 //         screenStream.addTrack(audioStream.getAudioTracks()[0]);
 //     }).catch(function(e){
 //         // error;
+//         console.log(e);
 //     })
 // }).catch(function(e){
 //     // error;
+//     console.log(e);
 // });
