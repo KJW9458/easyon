@@ -1,6 +1,6 @@
 // CHROME 만 ?
 var agent = navigator.userAgent.toLowerCase();
-var chrome = (agent.indexOf("chrome") != -1) ? "chrome" : "";
+// var chrome = (agent.indexOf("chrome") != -1) ? "chrome" : "";
 console.log(self);
 if (typeof chrome === 'undefined' && (typeof self === 'undefined' || typeof self.port === 'undefined')){
     console.log('neither in chrome nor FF');
