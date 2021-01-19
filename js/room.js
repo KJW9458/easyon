@@ -18,7 +18,7 @@ const config = {
         resturl: "https://signal.remotemonster.com/rest",
     },
     view: {
-        // remote1: '#remoteVideo1',
+        remote1: '#remoteVideo1',
         // remote2: '#remoteVideo2',
         local: '#localVideo'
     },
