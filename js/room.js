@@ -18,7 +18,7 @@ const config = {
         resturl: "https://signal.remotemonster.com/rest",
     },
     view: {
-        // remote1: '#remoteVideo1',
+        remote1: '#remoteVideo1',
         // remote2: '#remoteVideo2',
         local: '#localVideo'
     },
@@ -43,116 +43,116 @@ const config = {
     }
 }
 
-const videoAttrs = {
-    // id: "other",
-    class: "remote-video center w-320 h-240",
-    autoplay: true,
-    muted: true,
-    playsinline: true,
-    style: "z-index:1;background: rgba(0, 0, 0, 0.5); width: 370px;height: 215px; object-fit: cover; margin: 10px"
-}
+// const videoAttrs = {
+//     // id: "other",
+//     class: "remote-video center w-320 h-240",
+//     autoplay: true,
+//     muted: true,
+//     playsinline: true,
+//     style: "z-index:1;background: rgba(0, 0, 0, 0.5); width: 370px;height: 215px; object-fit: cover; margin: 10px"
+// }
 
-const listener = {
-    onConnect(chid) {
-        console.log(`remon.listener.onConnect ${chid} at listener`);
-    },
-    onComplete() {
-        console.log(`remon.listener.onComplete: ${remon.getChannelId()} `);
-        remonRoom[remon.getChannelId()] = true;
-    },
-    onDisconnectChannel() {
-        // is called when other peer hang up.
-        remon.close();
-        isConnected = false;
-    },
-    onClose() {
-        // is called when remon.close() method is called.
-        console.log(`remon.listener.onClose: ${remon.getChannelId()}`);
-        console.log(`onClose`);
-        remonCall.close();
-        if($('#localVideo')[0].srcObject){ $('#localVideo')[0].srcObject=undefined; }
-        remonCall = new Remon({config: config, listener: listener});
-    },
-    onError(error) {
-        console.log(`remon.listener.onError: ${remon.getChannelId()} ${error}`);
-    },
-    onStat(result) {
-        // console.log(`EVENT FIRED: onStat:  ${JSON.stringify(result)}`);
-    },
-    onRoomEvent(result) {
-        //join
-        switch (result.event) {
-            case 'join':
-                if (!remonRoom[result.channel.id]) {
-                    remonRoom[result.channel.id] = true;
-                    let newVideo = document.createElement('video')
-                    videoAttrs.id = result.channel.id.replace(":", "-");
-                    Object.keys(videoAttrs).forEach(key => newVideo.setAttribute(key, videoAttrs[key]))
-                    config.view.remote = `#${newVideo.id}`
-                    newVideo.remon = new Remon({
-                        config
-                    })
-                    otherVideos.append(newVideo)
-                    newVideo.remon.joinCast(newVideo.id.replace("-", ":"))
-                }
-                break;
-            case 'leave':
-                if (remonRoom[result.channel.id] && result.channel.id !== remon.getChannelId()) {
-                    let video = document.getElementById(result.channel.id.replace(":", "-"));
-                    otherVideos.removeChild(video);
-                    delete remonRoom[result.channel.id]
-                }
-                break;
-        }
-        console.log(`EVENT FIRED: onRoomEvent channel Id : ${remon.getChannelId()}`)
-        console.log(`EVENT FIRED: onRoomEvent: ${JSON.stringify(result)}`)
-    }
-};
+// const listener = {
+//     onConnect(chid) {
+//         console.log(`remon.listener.onConnect ${chid} at listener`);
+//     },
+//     onComplete() {
+//         console.log(`remon.listener.onComplete: ${remon.getChannelId()} `);
+//         remonRoom[remon.getChannelId()] = true;
+//     },
+//     onDisconnectChannel() {
+//         // is called when other peer hang up.
+//         remon.close();
+//         isConnected = false;
+//     },
+//     onClose() {
+//         // is called when remon.close() method is called.
+//         console.log(`remon.listener.onClose: ${remon.getChannelId()}`);
+//         console.log(`onClose`);
+//         remonCall.close();
+//         if($('#localVideo')[0].srcObject){ $('#localVideo')[0].srcObject=undefined; }
+//         remonCall = new Remon({config: config, listener: listener});
+//     },
+//     onError(error) {
+//         console.log(`remon.listener.onError: ${remon.getChannelId()} ${error}`);
+//     },
+//     onStat(result) {
+//         // console.log(`EVENT FIRED: onStat:  ${JSON.stringify(result)}`);
+//     },
+//     onRoomEvent(result) {
+//         //join
+//         switch (result.event) {
+//             case 'join':
+//                 if (!remonRoom[result.channel.id]) {
+//                     remonRoom[result.channel.id] = true;
+//                     let newVideo = document.createElement('video')
+//                     videoAttrs.id = result.channel.id.replace(":", "-");
+//                     Object.keys(videoAttrs).forEach(key => newVideo.setAttribute(key, videoAttrs[key]))
+//                     config.view.remote = `#${newVideo.id}`
+//                     newVideo.remon = new Remon({
+//                         config
+//                     })
+//                     otherVideos.append(newVideo)
+//                     newVideo.remon.joinCast(newVideo.id.replace("-", ":"))
+//                 }
+//                 break;
+//             case 'leave':
+//                 if (remonRoom[result.channel.id] && result.channel.id !== remon.getChannelId()) {
+//                     let video = document.getElementById(result.channel.id.replace(":", "-"));
+//                     otherVideos.removeChild(video);
+//                     delete remonRoom[result.channel.id]
+//                 }
+//                 break;
+//         }
+//         console.log(`EVENT FIRED: onRoomEvent channel Id : ${remon.getChannelId()}`)
+//         console.log(`EVENT FIRED: onRoomEvent: ${JSON.stringify(result)}`)
+//     }
+// };
 
-async function start(r) {
-    if (isConnected) {
-        cnt--;
-        isConnected = false;
-        document.querySelector('#enterBtn').innerHTML = "시작하기";
-        Object.keys(remonRoom).forEach(function(id) {
-            if (id !== remon.getChannelId()) {
-                let video = document.getElementById(id.replace(":", "-"));
-                if (video && video.remon) {
-                    otherVideos.removeChild(video);
-                }
-            }
-            delete remonRoom[id];
-        })
-        document.getElementById('join_user').innerHTML = "현재접속자리스트 (" + cnt + "/4)";
-        remon.close()
-    } else {
-        isConnected = true;
-        cnt++;
-        document.querySelector('#enterBtn').innerHTML = "종료";
-        remon = new Remon({
-            config,
-            listener
-        });
-        await remon.createRoom(r);
-        let participants = await remon.fetchRooms(r);
-        participants.forEach(async function(participant) {
-            if (!remonRoom[participant.id]) {
-                remonRoom[participant.id] = true;
-                let newVideo = document.createElement('video');
-                videoAttrs.id = participant.id.replace(":", "-");
-                Object.keys(videoAttrs).forEach(key => newVideo.setAttribute(key, videoAttrs[key]))
-                config.view.remote = `#${newVideo.id}`
-                newVideo.remon = new Remon({
-                    config
-                })
-                otherVideos.append(newVideo)
-                await newVideo.remon.joinCast(newVideo.id.replace("-", ":"));
-            }
-        })
-        document.getElementById('join_user').innerHTML = "현재접속자리스트 (" + cnt + "/4)";
-        document.getElementById('join_list').append('<div class="user"><p>' + newVideo.id + '</p></div>');
-    }
-}
+// async function start(r) {
+//     if (isConnected) {
+//         cnt--;
+//         isConnected = false;
+//         document.querySelector('#enterBtn').innerHTML = "시작하기";
+//         Object.keys(remonRoom).forEach(function(id) {
+//             if (id !== remon.getChannelId()) {
+//                 let video = document.getElementById(id.replace(":", "-"));
+//                 if (video && video.remon) {
+//                     otherVideos.removeChild(video);
+//                 }
+//             }
+//             delete remonRoom[id];
+//         })
+//         document.getElementById('join_user').innerHTML = "현재접속자리스트 (" + cnt + "/4)";
+//         remon.close()
+//     } else {
+//         isConnected = true;
+//         cnt++;
+//         document.querySelector('#enterBtn').innerHTML = "종료";
+//         remon = new Remon({
+//             config,
+//             listener
+//         });
+//         await remon.createRoom(r);
+//         let participants = await remon.fetchRooms(r);
+//         participants.forEach(async function(participant) {
+//             if (!remonRoom[participant.id]) {
+//                 remonRoom[participant.id] = true;
+//                 let newVideo = document.createElement('video');
+//                 videoAttrs.id = participant.id.replace(":", "-");
+//                 Object.keys(videoAttrs).forEach(key => newVideo.setAttribute(key, videoAttrs[key]))
+//                 config.view.remote = `#${newVideo.id}`
+//                 newVideo.remon = new Remon({
+//                     config
+//                 })
+//                 otherVideos.append(newVideo)
+//                 await newVideo.remon.joinCast(newVideo.id.replace("-", ":"));
+//             }
+//         })
+//         document.getElementById('join_user').innerHTML = "현재접속자리스트 (" + cnt + "/4)";
+//         document.getElementById('join_list').append('<div class="user"><p>' + newVideo.id + '</p></div>');
+//     }
+// }
 
 
 enterBtn.addEventListener("click",
@@ -163,60 +163,66 @@ enterBtn.addEventListener("click",
     false
 );
 
-// const listener = {
-//     onConnect(chid) {
-//         $('#channelId').text(chid);
-//         $('#channelState').text("대기 중");
-//         console.log(`onConnect: ${chid}`);
-//     },
-//     onComplete() {
-//         $('#channelState').text("통화 중");
-//         console.log(`onComplete`);
-//     },
-//     onClose() {
-//         $('#channelState').text("통화 종료");
-//         console.log(`onClose`);
-//         remonCall.close();
-//         if ($('#localVideo')[0].srcObject) {
-//             $('#localVideo')[0].srcObject = undefined;
-//         }
-//         remonCall = new Remon({
-//             config: config,
-//             listener: listener
-//         });
-//     }
-// }
+const listener = {
+    onConnect(chid) {
+        $('#channelId').text(chid);
+        $('#channelState').text("대기 중");
+        console.log(`onConnect: ${chid}`);
+    },
+    onComplete() {
+        $('#channelState').text("통화 중");
+        console.log(`onComplete`);
+    },
+    onClose() {
+        $('#channelState').text("통화 종료");
+        console.log(`onClose`);
+        remonCall.close();
+        if ($('#localVideo')[0].srcObject) {
+            $('#localVideo')[0].srcObject = undefined;
+        }
+        remonCall = new Remon({
+            config: config,
+            listener: listener
+        });
+    }
+}
 
-// remonCall = new Remon({
-//     config: config,
-//     listener: listener
-// });
+remonCall = new Remon({
+    config: config,
+    listener: listener
+});
+async function start(r){
+    if(isConnected){
+        $('#enterBtn').click(function() {
+            isConnected = false;
+            // connectCall의 인자는 통화채널의 ID입니다. 실제 서비스에서는 동일한 통화채널의 ID가 아닌, 고유하고 예측이 어려운 ID를 사용해야합니다.
+            remonCall.connectCall(roomHash);
+        });
+    } else {
+        // "종료" 버튼을 클릭하면 통화채널에서 나갑니다.
+        isConnected = true;
+        $('#enterBtn').click(function() {
+            remonCall.close();
+        });
+        }
+    }
 
-// $('#enterBtn').click(function() {
-//     // connectCall의 인자는 통화채널의 ID입니다. 실제 서비스에서는 동일한 통화채널의 ID가 아닌, 고유하고 예측이 어려운 ID를 사용해야합니다.
-//     remonCall.connectCall(roomHash);
-// });
 
-// // "종료" 버튼을 클릭하면 통화채널에서 나갑니다.
-// $('#enterBtn').click(function() {
-//     remonCall.close();
-// });
-
-// navigator.mediaDevices.getUserMedia({
-//     audio: true
-// }).then(function(audioStream){
-//     //오디오 스트림을 얻어냄
-//     navigator.mediaDevices.getDisplayMedia({
-//         audio: true,
-//         video: true
-//     }).then(function(screenStream){
-//         //스크린 공유 스트림을 얻어내고 여기에 오디오 스트림을 결합함
-//         screenStream.addTrack(audioStream.getAudioTracks()[0]);
-//     }).catch(function(e){
-//         // error;
-//         console.log(e);
-//     })
-// }).catch(function(e){
-//     // error;
-//     console.log(e);
-// });
+navigator.mediaDevices.getUserMedia({
+    audio: true
+}).then(function(audioStream){
+    //오디오 스트림을 얻어냄
+    navigator.mediaDevices.getDisplayMedia({
+        audio: true,
+        video: true
+    }).then(function(screenStream){
+        //스크린 공유 스트림을 얻어내고 여기에 오디오 스트림을 결합함
+        screenStream.addTrack(audioStream.getAudioTracks()[0]);
+    }).catch(function(e){
+        // error;
+        console.log(e);
+    })
+}).catch(function(e){
+    // error;
+    console.log(e);
+});
