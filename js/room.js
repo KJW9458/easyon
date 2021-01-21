@@ -154,15 +154,6 @@ const config = {
 //     }
 // }
 
-
-enterBtn.addEventListener("click",
-    evt => {
-        start(roomHash);
-        evt.preventDefault();
-    },
-    false
-);
-
 const listener = {
     onConnect(chid) {
         $('#channelId').text(chid);
@@ -191,6 +182,15 @@ remonCall = new Remon({
     config: config,
     listener: listener
 });
+
+enterBtn.addEventListener("click",
+    evt => {
+        start(roomHash);
+        evt.preventDefault();
+    },
+    false
+);
+
 async function start(r){
     if(isConnected){
         isConnected = false;
