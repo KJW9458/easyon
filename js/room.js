@@ -206,8 +206,8 @@ async function start(r){
         $('#enterBtn').click(function() {
             remonCall.close();
         });
-        }
     }
+}
 
 
 // navigator.mediaDevices.getUserMedia({
