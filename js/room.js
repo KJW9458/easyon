@@ -197,7 +197,7 @@ async function start(r){
         document.querySelector('#enterBtn').innerHTML = "시작하기";
         $('#enterBtn').click(function() {
             // connectCall의 인자는 통화채널의 ID입니다. 실제 서비스에서는 동일한 통화채널의 ID가 아닌, 고유하고 예측이 어려운 ID를 사용해야합니다.
-            remonCall.connectCall(roomHash);
+            remonCall.connectCall(r);
         });
     } else {
         // "종료" 버튼을 클릭하면 통화채널에서 나갑니다.
