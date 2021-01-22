@@ -168,28 +168,29 @@ const listener = {
     onClose() {
         // $('#channelState').text("통화 종료");
         console.log(`onClose`);
-        remonCall.close();
-        if ($('#localVideo')[0].srcObject) {
-            $('#localVideo')[0].srcObject = undefined;
-        }
-        remonCall = new Remon({
-            config: config,
-            listener: listener
-        });
+        remon.close();
+        // if ($('#localVideo')[0].srcObject) {
+        //     $('#localVideo')[0].srcObject = undefined;
+        // }
+        // remonCall = new Remon({
+        //     config: config,
+        //     listener: listener
+        // });
     }
 }
 
-remonCall = new Remon({
-    config: config,
-    listener: listener
-});
+// remonCall = new Remon({
+//     config: config,
+//     listener: listener
+// });
 
 enterBtn.addEventListener("click",
     evt => {
         // start(roomHash);
         $("#closeBtn").css("display", "block");
         $("#enterBtn").css("display", "none");
-        remonCall.connectCall(roomHash);
+        remon = new Remon({config, listener});
+        remon.connectCall(roomHash);
         evt.preventDefault();
     },
     false
@@ -200,7 +201,7 @@ closeBtn.addEventListener("click",
         // start(roomHash);
         $("#enterBtn").css("display", "block");
         $("#closeBtn").css("display", "none");
-        remonCall.close();
+        remon.close();
         evt.preventDefault();
     },
     false
@@ -211,7 +212,7 @@ async function start(r){
         isConnected = false;
         // document.querySelector('#enterBtn').innerHTML = "시작하기";
         $('#enterBtn').click(function() {
-            remonCall.close();
+            remon.close();
         });
     } else {
         // "종료" 버튼을 클릭하면 통화채널에서 나갑니다.
@@ -219,7 +220,7 @@ async function start(r){
         // document.querySelector('#enterBtn').innerHTML = "종료";
         $('#enterBtn').click(function() {
             // connectCall의 인자는 통화채널의 ID입니다. 실제 서비스에서는 동일한 통화채널의 ID가 아닌, 고유하고 예측이 어려운 ID를 사용해야합니다.
-            remonCall.connectCall(r);
+            remon.connectCall(r);
         });
     }
 }
