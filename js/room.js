@@ -157,7 +157,7 @@ const config = {
 
 const listener = {
     onConnect(chid) {
-        $('#channelId').text(chid);
+        // $('#channelId').text(chid);
         // $('#channelState').text("대기 중");
         console.log(`onConnect: ${chid}`);
     },
