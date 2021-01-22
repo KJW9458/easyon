@@ -2,6 +2,7 @@ var cnt = 0;
 const roomHash = location.hash.substring(1);
 
 const enterBtn = document.querySelector("#enterBtn");
+const closeBtn = document.querySelector('#closeBtn');
 const otherVideos = document.getElementById('otherVideos');
 let remonCall;
 let isConnected = false;
@@ -157,15 +158,15 @@ const config = {
 const listener = {
     onConnect(chid) {
         $('#channelId').text(chid);
-        $('#channelState').text("대기 중");
+        // $('#channelState').text("대기 중");
         console.log(`onConnect: ${chid}`);
     },
     onComplete() {
-        $('#channelState').text("통화 중");
+        // $('#channelState').text("통화 중");
         console.log(`onComplete`);
     },
     onClose() {
-        $('#channelState').text("통화 종료");
+        // $('#channelState').text("통화 종료");
         console.log(`onClose`);
         remonCall.close();
         if ($('#localVideo')[0].srcObject) {
@@ -185,7 +186,21 @@ remonCall = new Remon({
 
 enterBtn.addEventListener("click",
     evt => {
-        start(roomHash);
+        // start(roomHash);
+        $("#closeBtn").css("display", "block");
+        $("#enterBtn").css("display", "none");
+        remonCall.connectCall(roomHash);
+        evt.preventDefault();
+    },
+    false
+);
+
+closeBtn.addEventListener("click",
+    evt => {
+        // start(roomHash);
+        $("#enterBtn").css("display", "block");
+        $("#closeBtn").css("display", "none");
+        remonCall.close();
         evt.preventDefault();
     },
     false
@@ -203,6 +218,7 @@ async function start(r){
         // "종료" 버튼을 클릭하면 통화채널에서 나갑니다.
         isConnected = true;
         document.querySelector('#enterBtn').innerHTML = "종료";
+        $("clo")
         $('#enterBtn').click(function() {
             remonCall.connectCall(r);
         });
