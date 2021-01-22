@@ -59,6 +59,7 @@ var inputMic = document.querySelector("#inputMic");
 inputSlider.addEventListener('input', function(){
   var v = parseFloat(inputSlider.value)/100.0;
   console.log(v);
+  
   lVideo.volume=v;
   oVideo.volume=v;
 });
