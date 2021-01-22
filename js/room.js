@@ -22,27 +22,26 @@ const config = {
         remote1: '#remoteVideo1',
         // remote2: '#remoteVideo2',
         local: '#localVideo'
+    },
+    media: {
+        video: {
+            width: {
+                min: 370, //250
+                max: 370 //250
+            },
+            height: {
+                min: 215,
+                max: 215
+            },
+            frameRate: {
+                min: 8,
+                max: 30
+            },
+            // maxBandwidth: 250,
+            codec: 'H264'
+        },
+        audio: true
     }
-    // ,
-    // media: {
-    //     video: {
-    //         width: {
-    //             min: 370, //250
-    //             max: 370 //250
-    //         },
-    //         height: {
-    //             min: 215,
-    //             max: 215
-    //         },
-    //         frameRate: {
-    //             min: 8,
-    //             max: 30
-    //         },
-    //         // maxBandwidth: 250,
-    //         codec: 'H264'
-    //     },
-    //     audio: true
-    // }
 }
 
 // const videoAttrs = {
