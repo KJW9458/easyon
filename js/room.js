@@ -4,7 +4,7 @@ const roomHash = location.hash.substring(1);
 const enterBtn = document.querySelector("#enterBtn");
 const otherVideos = document.getElementById('otherVideos');
 let remonCall;
-let isConnected = true;
+let isConnected = false;
 let remon;
 let remonRoom = [];
 const key = "6e779e7ed3e3bf6301d6b49529863fa0ebea59b903f2972c5565ba12201edb34";
@@ -197,14 +197,14 @@ async function start(r){
         document.querySelector('#enterBtn').innerHTML = "시작하기";
         $('#enterBtn').click(function() {
             // connectCall의 인자는 통화채널의 ID입니다. 실제 서비스에서는 동일한 통화채널의 ID가 아닌, 고유하고 예측이 어려운 ID를 사용해야합니다.
-            remonCall.connectCall(r);
+            remonCall.close();
         });
     } else {
         // "종료" 버튼을 클릭하면 통화채널에서 나갑니다.
         isConnected = true;
         document.querySelector('#enterBtn').innerHTML = "종료";
         $('#enterBtn').click(function() {
-            remonCall.close();
+            remonCall.connectCall(r);
         });
     }
 }
