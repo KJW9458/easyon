@@ -37,7 +37,7 @@ const config = {
                 min: 8,
                 max: 30
             },
-            maxBandwidth: 250,
+            // maxBandwidth: 250,
             codec: 'H264'
         },
         audio: true
