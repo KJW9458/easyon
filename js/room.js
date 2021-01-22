@@ -212,7 +212,6 @@ async function start(r){
         isConnected = false;
         // document.querySelector('#enterBtn').innerHTML = "시작하기";
         $('#enterBtn').click(function() {
-            // connectCall의 인자는 통화채널의 ID입니다. 실제 서비스에서는 동일한 통화채널의 ID가 아닌, 고유하고 예측이 어려운 ID를 사용해야합니다.
             remonCall.close();
         });
     } else {
@@ -220,6 +219,7 @@ async function start(r){
         isConnected = true;
         // document.querySelector('#enterBtn').innerHTML = "종료";
         $('#enterBtn').click(function() {
+            // connectCall의 인자는 통화채널의 ID입니다. 실제 서비스에서는 동일한 통화채널의 ID가 아닌, 고유하고 예측이 어려운 ID를 사용해야합니다.
             remonCall.connectCall(r);
         });
     }
